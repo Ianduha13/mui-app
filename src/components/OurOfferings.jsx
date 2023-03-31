@@ -9,44 +9,22 @@ import {
 	Button,
 } from "@mui/material"
 import { ArrowForward } from "@mui/icons-material"
-import Image27 from "../assets/imgs/INREGlobal-JTS/image 27-1.png"
-import Image272 from "../assets/imgs/INREGlobal-JTS/image 27-2.png"
+import { useState } from "react"
+import {
+	Offerings,
+	cardContent1,
+	cardContent2,
+	cardContent3,
+} from "./constants/Offerings"
 
 const OurOfferings = () => {
-	const cardContent = [
-		{
-			media: Image27,
-			header: "Background verification",
-			content:
-				"Assuring your capital is in safe hands, we provide detailed verification reports of the project and developer. These are customized and detailed...",
-		},
-		{
-			media: Image272,
-			header: "Virtual site visit",
-			content:
-				"It becomes imperative to observe your apartment or plot very closely before paying the booking amount. We are here to assist with an AI-enabled UAV...",
-		},
-		{
-			media: Image272,
-			header: "Title diligence",
-			content:
-				"Due diligence is necessary to prevent real estate malpractices which have contributed to more than 20% of the civil cases in India. We have a panel of...",
-		},
-	]
-	const Offerings = [
-		{
-			number: 1,
-			text: "Pre-Booking",
-		},
-		{
-			number: 2,
-			text: "Post-Booking & Pre-Registration",
-		},
-		{
-			number: 3,
-			text: "Post-Registration",
-		},
-	]
+	const [switchSelected, setSwitchSelected] = useState(1)
+	const cardContentSelected =
+		switchSelected === 1
+			? cardContent1
+			: switchSelected === 2
+			? cardContent2
+			: cardContent3
 	return (
 		<Container
 			sx={{
@@ -64,7 +42,7 @@ const OurOfferings = () => {
 			</Typography>
 			<Box sx={{ display: "flex", weight: "100vw", gap: "29px", mb: "34px" }}>
 				{Offerings.map((x) => (
-					<Box
+					<Button
 						key={x.number}
 						sx={{
 							height: "100px",
@@ -77,12 +55,13 @@ const OurOfferings = () => {
 							alignItems: "center",
 							boxSizing: "border-box", // i tried to prevent the move with this prop
 							gap: "20px",
-							":hover": {
+							":focus": {
 								borderBottom: "5px solid #000",
 								backgroundColor: "#CCD3DC",
 								boxSizing: "border-box", // i tried to prevent the move with this prop
 							},
 						}}
+						onClick={() => setSwitchSelected(x.number)}
 					>
 						<Box
 							sx={{
@@ -105,11 +84,11 @@ const OurOfferings = () => {
 								{x.text}
 							</Typography>
 						</Box>
-					</Box>
+					</Button>
 				))}
 			</Box>
 			<Box sx={{ display: "flex", gap: "46px" }}>
-				{cardContent.map((x) => (
+				{cardContentSelected.map((x) => (
 					<Card
 						key={x.header}
 						variant='outlined'
