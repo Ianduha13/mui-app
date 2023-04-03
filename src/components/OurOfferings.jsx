@@ -10,6 +10,7 @@ import {
 } from "@mui/material"
 import { ArrowForward } from "@mui/icons-material"
 import { useState } from "react"
+import CarrouselButtons from "./CarrouselButtons"
 import {
 	Offerings,
 	cardContent1,
@@ -17,8 +18,9 @@ import {
 	cardContent3,
 } from "./constants/Offerings"
 
-const OurOfferings = () => {
+const OurOfferings = ({ width }) => {
 	const [switchSelected, setSwitchSelected] = useState(1)
+	const [indexShown, setIndexShown] = useState(0)
 	const cardContentSelected =
 		switchSelected === 1
 			? cardContent1
@@ -27,6 +29,7 @@ const OurOfferings = () => {
 			: cardContent3
 	return (
 		<Container
+			id='ourOfferings'
 			sx={{
 				display: "flex",
 				flexDirection: "column",
@@ -125,72 +128,151 @@ const OurOfferings = () => {
 				))}
 			</Box>
 			<Box sx={{ display: "flex", gap: "46px" }}>
-				{cardContentSelected.map((x) => (
-					<Card
-						key={x.header}
-						variant='outlined'
-						sx={{
-							position: "relative",
-							height: { xs: "452px", lg: "631px" },
-							width: { xs: "360px", lg: "455px" },
-							padding: { xs: "15px", lg: "24px" },
-						}}
-					>
-						<CardMedia
-							sx={{
-								height: { xs: "245px", lg: "319px" },
-								width: { xs: "330px", lg: "407px" },
-							}}
-						>
-							<img
-								style={{ height: "100%", width: "100%" }}
-								src={x.media}
-								alt='image27'
-							/>
-						</CardMedia>
-						<CardContent
-							sx={{
-								display: "flex",
-								flexDirection: "column",
-								padding: "0",
-								gap: { xs: "10px", lg: "20px" },
-								mt: { xs: "10px", lg: "30px" },
-							}}
-						>
-							<Typography
-								variant='h4'
-								sx={{
-									fontSize: { xs: "20px", lg: "28px" },
-									color: "#002550",
-								}}
-							>
-								{x.header}
-							</Typography>
-							<Typography
-								sx={{
-									color: "#1A1A1A",
-									opacity: "0.6",
-									fontSize: { xs: "14px", lg: "18px" },
-								}}
-							>
-								{x.content}
-							</Typography>
-						</CardContent>
-						<CardActions sx={{ padding: "0", mt: { xs: "10px", lg: "20px" } }}>
-							<Button
+				{width <= 975
+					? cardContentSelected.map((x, i) => {
+							if (i === indexShown) {
+								return (
+									<Card
+										key={x.header}
+										variant='outlined'
+										sx={{
+											position: "relative",
+											height: { xs: "452px", lg: "631px" },
+											width: { xs: "360px", lg: "455px" },
+											padding: { xs: "15px", lg: "24px" },
+										}}
+									>
+										<CardMedia
+											sx={{
+												height: { xs: "245px", lg: "319px" },
+												width: { xs: "330px", lg: "407px" },
+											}}
+										>
+											<img
+												style={{ height: "100%", width: "100%" }}
+												src={x.media}
+												alt='image27'
+											/>
+										</CardMedia>
+										<CarrouselButtons
+											indexShown={indexShown}
+											setIndexShown={setIndexShown}
+										/>
+										<CardContent
+											sx={{
+												display: "flex",
+												flexDirection: "column",
+												padding: "0",
+												gap: { xs: "10px", lg: "20px" },
+												mt: { xs: "10px", lg: "30px" },
+											}}
+										>
+											<Typography
+												variant='h4'
+												sx={{
+													fontSize: { xs: "20px", lg: "28px" },
+													color: "#002550",
+												}}
+											>
+												{x.header}
+											</Typography>
+											<Typography
+												sx={{
+													color: "#1A1A1A",
+													opacity: "0.6",
+													fontSize: { xs: "14px", lg: "18px" },
+												}}
+											>
+												{x.content}
+											</Typography>
+										</CardContent>
+										<CardActions
+											sx={{ padding: "0", mt: { xs: "10px", lg: "20px" } }}
+										>
+											<Button
+												variant='outlined'
+												sx={{
+													fontWeight: "600",
+													fontSize: { xs: "14px", lg: "18px" },
+													py: { xs: "6px", lg: "10px" },
+													px: { xs: "16px", lg: "32px" },
+												}}
+											>
+												Contact Us <ArrowForward sx={{ pl: "4px" }} />
+											</Button>
+										</CardActions>
+									</Card>
+								)
+							}
+					  })
+					: cardContentSelected.map((x) => (
+							<Card
+								key={x.header}
 								variant='outlined'
 								sx={{
-									fontWeight: "600",
-									fontSize: { xs: "14px", lg: "18px" },
-									py: { xs: "6px", lg: "10px" },
-									px: { xs: "16px", lg: "32px" },
+									position: "relative",
+									height: { xs: "452px", lg: "631px" },
+									width: { xs: "360px", lg: "455px" },
+									padding: { xs: "15px", lg: "24px" },
 								}}
 							>
-								Contact Us <ArrowForward sx={{ pl: "4px" }} />
-							</Button>
-						</CardActions>
-					</Card>
-				))}
+								<CardMedia
+									sx={{
+										height: { xs: "245px", lg: "319px" },
+										width: { xs: "330px", lg: "407px" },
+									}}
+								>
+									<img
+										style={{ height: "100%", width: "100%" }}
+										src={x.media}
+										alt='image27'
+									/>
+								</CardMedia>
+								<CardContent
+									sx={{
+										display: "flex",
+										flexDirection: "column",
+										padding: "0",
+										gap: { xs: "10px", lg: "20px" },
+										mt: { xs: "10px", lg: "30px" },
+									}}
+								>
+									<Typography
+										variant='h4'
+										sx={{
+											fontSize: { xs: "20px", lg: "28px" },
+											color: "#002550",
+										}}
+									>
+										{x.header}
+									</Typography>
+									<Typography
+										sx={{
+											color: "#1A1A1A",
+											opacity: "0.6",
+											fontSize: { xs: "14px", lg: "18px" },
+										}}
+									>
+										{x.content}
+									</Typography>
+								</CardContent>
+								<CardActions
+									sx={{ padding: "0", mt: { xs: "10px", lg: "20px" } }}
+								>
+									<Button
+										variant='outlined'
+										sx={{
+											fontWeight: "600",
+											fontSize: { xs: "14px", lg: "18px" },
+											py: { xs: "6px", lg: "10px" },
+											px: { xs: "16px", lg: "32px" },
+										}}
+									>
+										Contact Us <ArrowForward sx={{ pl: "4px" }} />
+									</Button>
+								</CardActions>
+							</Card>
+					  ))}
 			</Box>
 		</Container>
 	)

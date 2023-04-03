@@ -11,8 +11,11 @@ import {
 import Member1Img from "../assets/imgs/INREGlobal-JTS/image 27-6.png"
 import Member2Img from "../assets/imgs/INREGlobal-JTS/image 27-8.png"
 import Member3Img from "../assets/imgs/INREGlobal-JTS/image 31.png"
+import { useState } from "react"
+import CarrouselButtons from "./CarrouselButtons"
 
-const OurTeam = () => {
+const OurTeam = ({ width }) => {
+	const [indexShown, setIndexShown] = useState(0)
 	const teamMembers = [
 		{
 			name: "Brajesh Pathak",
@@ -42,6 +45,7 @@ const OurTeam = () => {
 	]
 	return (
 		<Container
+			id='ourTeam'
 			sx={{
 				display: "flex",
 				flexDirection: "column",
@@ -68,100 +72,203 @@ const OurTeam = () => {
 				</Typography>
 			</Box>
 			<Box sx={{ display: "flex", gap: "46px" }}>
-				{teamMembers.map((x) => (
-					<Card
-						key={x.name}
-						variant='outlined'
-						sx={{
-							position: "relative",
-							height: { xs: "515px", lg: "592px" },
-							width: { xs: "360px", lg: "455px" },
-							padding: { xs: "15px", lg: "24px" },
-							boxhadow: "0px 0px 4px rgba(0, 0, 0, 0.3)",
-						}}
-					>
-						<CardMedia
-							sx={{
-								display: "flex",
-								bgcolor: "#1F1F1F",
-								borderRadius: "10px",
-								justifyContent: "center",
-								alignItems: "flex-end",
-								width: "100%",
-								height: { xs: "245px", lg: "319px" },
-							}}
-						>
-							<img
-								style={{ height: "100%", width: "100%" }}
-								src={x.image}
-								alt={x.name}
-							/>
-						</CardMedia>
-						<CardContent
-							sx={{
-								padding: "0px",
-								mt: "20px",
-								display: "flex",
-								flexDirection: "column",
-								gap: { xs: "12px", lg: "5px" },
-							}}
-						>
-							<Typography
-								variant='h4'
+				{width <= 975
+					? teamMembers.map((x) => {
+							if (teamMembers.indexOf(x) === indexShown) {
+								return (
+									<Card
+										key={x.name}
+										variant='outlined'
+										sx={{
+											position: "relative",
+											height: { xs: "515px", lg: "592px" },
+											width: { xs: "360px", lg: "455px" },
+											padding: { xs: "15px", lg: "24px" },
+											boxhadow: "0px 0px 4px rgba(0, 0, 0, 0.3)",
+										}}
+									>
+										<CarrouselButtons
+											indexShown={indexShown}
+											setIndexShown={setIndexShown}
+										/>
+										<CardMedia
+											sx={{
+												display: "flex",
+												bgcolor: "#1F1F1F",
+												borderRadius: "10px",
+												justifyContent: "center",
+												alignItems: "flex-end",
+												width: "100%",
+												height: { xs: "245px", lg: "319px" },
+											}}
+										>
+											<img
+												style={{ height: "100%", width: "100%" }}
+												src={x.image}
+												alt={x.name}
+											/>
+										</CardMedia>
+										<CardContent
+											sx={{
+												padding: "0px",
+												mt: "20px",
+												display: "flex",
+												flexDirection: "column",
+												gap: { xs: "12px", lg: "5px" },
+											}}
+										>
+											<Typography
+												variant='h4'
+												sx={{
+													fontFamily: "Open Sans, sans-serif",
+													color: "#002550",
+													fontSize: { xs: "20px", lg: "28px" },
+												}}
+											>
+												{x.name}
+											</Typography>
+											<Typography
+												sx={{
+													display: { xs: "block", lg: "none" },
+													color: "#1A1A1A",
+													fontWeight: "400",
+													fontSize: "16px",
+													opacity: "0.4",
+													fontFamily: "Open Sans, sans-serif",
+												}}
+											>
+												{x.role}
+											</Typography>
+											<Typography
+												sx={{
+													opacity: "0.6",
+													color: "#1A1A1A",
+													fontFamily: "Open Sans, sans-serif",
+												}}
+											>
+												{x.description}
+											</Typography>
+										</CardContent>
+										<CardActions
+											sx={{
+												display: "flex",
+												justifyContent: "flex-end",
+												padding: "0px",
+												position: "absolute",
+												bottom: "19.5px",
+												right: "25px",
+											}}
+										>
+											<Button variant='transparent' sx={{ padding: "0" }}>
+												<Typography
+													sx={{
+														fontFamily: "Open Sans, sans-serif",
+														fontWeight: "600",
+														opacity: "0.6",
+													}}
+												>
+													View More
+												</Typography>
+											</Button>
+										</CardActions>
+									</Card>
+								)
+							}
+					  })
+					: teamMembers.map((x) => (
+							<Card
+								key={x.name}
+								variant='outlined'
 								sx={{
-									fontFamily: "Open Sans, sans-serif",
-									color: "#002550",
-									fontSize: { xs: "20px", lg: "28px" },
+									position: "relative",
+									height: { xs: "515px", lg: "592px" },
+									width: { xs: "360px", lg: "455px" },
+									padding: { xs: "15px", lg: "24px" },
+									boxhadow: "0px 0px 4px rgba(0, 0, 0, 0.3)",
 								}}
 							>
-								{x.name}
-							</Typography>
-							<Typography
-								sx={{
-									display: { xs: "block", lg: "none" },
-									color: "#1A1A1A",
-									fontWeight: "400",
-									fontSize: "16px",
-									opacity: "0.4",
-									fontFamily: "Open Sans, sans-serif",
-								}}
-							>
-								{x.role}
-							</Typography>
-							<Typography
-								sx={{
-									opacity: "0.6",
-									color: "#1A1A1A",
-									fontFamily: "Open Sans, sans-serif",
-								}}
-							>
-								{x.description}
-							</Typography>
-						</CardContent>
-						<CardActions
-							sx={{
-								display: "flex",
-								justifyContent: "flex-end",
-								padding: "0px",
-								position: "absolute",
-								bottom: "19.5px",
-								right: "25px",
-							}}
-						>
-							<Button variant='transparent' sx={{ padding: "0" }}>
-								<Typography
+								<CardMedia
 									sx={{
-										fontFamily: "Open Sans, sans-serif",
-										fontWeight: "600",
-										opacity: "0.6",
+										display: "flex",
+										bgcolor: "#1F1F1F",
+										borderRadius: "10px",
+										justifyContent: "center",
+										alignItems: "flex-end",
+										width: "100%",
+										height: { xs: "245px", lg: "319px" },
 									}}
 								>
-									View More
-								</Typography>
-							</Button>
-						</CardActions>
-					</Card>
-				))}
+									<img
+										style={{ height: "100%", width: "100%" }}
+										src={x.image}
+										alt={x.name}
+									/>
+								</CardMedia>
+								<CardContent
+									sx={{
+										padding: "0px",
+										mt: "20px",
+										display: "flex",
+										flexDirection: "column",
+										gap: { xs: "12px", lg: "5px" },
+									}}
+								>
+									<Typography
+										variant='h4'
+										sx={{
+											fontFamily: "Open Sans, sans-serif",
+											color: "#002550",
+											fontSize: { xs: "20px", lg: "28px" },
+										}}
+									>
+										{x.name}
+									</Typography>
+									<Typography
+										sx={{
+											display: { xs: "block", lg: "none" },
+											color: "#1A1A1A",
+											fontWeight: "400",
+											fontSize: "16px",
+											opacity: "0.4",
+											fontFamily: "Open Sans, sans-serif",
+										}}
+									>
+										{x.role}
+									</Typography>
+									<Typography
+										sx={{
+											opacity: "0.6",
+											color: "#1A1A1A",
+											fontFamily: "Open Sans, sans-serif",
+										}}
+									>
+										{x.description}
+									</Typography>
+								</CardContent>
+								<CardActions
+									sx={{
+										display: "flex",
+										justifyContent: "flex-end",
+										padding: "0px",
+										position: "absolute",
+										bottom: "19.5px",
+										right: "25px",
+									}}
+								>
+									<Button variant='transparent' sx={{ padding: "0" }}>
+										<Typography
+											sx={{
+												fontFamily: "Open Sans, sans-serif",
+												fontWeight: "600",
+												opacity: "0.6",
+											}}
+										>
+											View More
+										</Typography>
+									</Button>
+								</CardActions>
+							</Card>
+					  ))}
 			</Box>
 		</Container>
 	)

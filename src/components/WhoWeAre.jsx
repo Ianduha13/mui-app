@@ -5,6 +5,7 @@ import { Paper, Typography, Box, Button } from "@mui/material"
 const WhoWeAre = () => {
 	return (
 		<Paper
+			id='whoweare'
 			elevation={0}
 			sx={{
 				width: { xs: "360px", lg: "1464px" },

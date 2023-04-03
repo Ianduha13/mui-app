@@ -21,6 +21,7 @@ const ContactForm = () => {
 	}
 	return (
 		<Box
+			id='contactUs'
 			sx={{
 				width: { xs: "360px", lg: "1488px" },
 				height: { xs: "auto", lg: "518px" },

@@ -7,6 +7,8 @@ import PhoneLogo from "../assets/imgs/INREGlobal-JTS/Icons/Vector-4.png"
 import EmailLogo from "../assets/imgs/INREGlobal-JTS/Icons/Vector-5.png"
 import CompanyLogo from "../assets/imgs/INREGlobal-JTS/Icons/10.svg"
 import { Link } from "react-router-dom"
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
+import { useState } from "react"
 
 const SocialBarData = [
 	{ logo: LinkedinLogo, text: "LinkedIn" },
@@ -27,33 +29,62 @@ const contactInfo = [
 ]
 
 const Footer = () => {
+	const [isVisibleCompany, setIsVisibleCompany] = useState(false)
+	const [isVisibleUseful, setIsVisibleUseful] = useState(false)
 	return (
 		<Container
 			maxWidth={false}
 			sx={{
 				display: "flex",
 				flexDirection: "column",
-				height: "380px",
+				height: { xs: "auto", lg: "380px" },
 				bgcolor: "primary.main",
 				width: "100vw",
+				px: { xs: "30px", lg: "0" },
 			}}
 		>
 			<Box
 				sx={{
 					display: "flex",
+					flexDirection: { xs: "column", lg: "row" },
 					justifyContent: "space-around",
 					paddingTop: "32px",
 					flexGrow: 1,
-					paddingX: "32px",
+					paddingX: { xs: "0", lg: "32px" },
 				}}
 			>
-				<Box sx={{ w: "107px", h: "107px", objectFit: "cover" }}>
-					<img style={{ width: "107px" }} src={CompanyLogo} />
+				<Box
+					sx={{
+						width: "104px",
+						objectFit: "contain",
+						mb: { xs: "32px", lg: 0 },
+						mt: { xs: "10px", lg: 0 },
+					}}
+				>
+					<img style={{ width: "100%" }} src={CompanyLogo} />
 				</Box>
 				<Box sx={{ w: 300 }}>
-					<List>
-						<Typography variant='h3' color={"white"} sx={{ mb: "25px" }}>
-							Company
+					<Box>
+						<Typography
+							variant='h3'
+							color={"white"}
+							onClick={() => {
+								setIsVisibleCompany(!isVisibleCompany)
+							}}
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "space-between",
+								mb: { xs: "20px", lg: "25px" },
+								fontSize: { xs: "20px", lg: "28px" },
+								width: { xs: "100%", lg: "auto" },
+								fontWeight: { xs: "400", lg: "600" },
+							}}
+						>
+							Company{" "}
+							<ArrowDropDownIcon
+								sx={{ display: { xs: "inline-block", lg: "none" } }}
+							/>
 						</Typography>
 						{companyLinks.map((x) => (
 							<Link
@@ -62,62 +93,160 @@ const Footer = () => {
 								key={x.text}
 								underline='none'
 							>
-								<Typography variant='h6' color={"white"} sx={{ mb: "25px" }}>
+								<Typography
+									variant='h6'
+									color={"white"}
+									sx={{
+										display: {
+											xs: isVisibleCompany ? "block" : "none",
+											lg: "block",
+										},
+										mb: "20px",
+									}}
+								>
 									{x.text}
 								</Typography>
 							</Link>
 						))}
-					</List>
+					</Box>
 				</Box>
-				<Box sx={{ w: 300, display: "flex" }}>
-					<List>
-						<Typography variant='h3' color={"white"} sx={{ mb: "25px" }}>
+				<Box sx={{ w: 300 }}>
+					<Box>
+						<Typography
+							variant='h3'
+							color={"white"}
+							onClick={() => {
+								setIsVisibleUseful(!isVisibleUseful)
+							}}
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "space-between",
+								mb: { xs: "20px", lg: "25px" },
+								fontSize: { xs: "20px", lg: "28px" },
+								fontWeight: { xs: "400", lg: "600" },
+								width: { xs: "100%", lg: "auto" },
+							}}
+						>
 							Useful Links
+							<ArrowDropDownIcon
+								sx={{ display: { xs: "inline-block", lg: "none" } }}
+							/>
 						</Typography>
 						<Link to={"/"} style={{ textDecoration: "none" }} underline='none'>
-							<Typography variant='h6' color={"white"}>
+							<Typography
+								variant='h6'
+								color={"white"}
+								sx={{
+									display: {
+										xs: isVisibleUseful ? "block" : "none",
+										lg: "block",
+									},
+									mb: "20px",
+								}}
+							>
 								Blogs
 							</Typography>
 						</Link>
-					</List>
+					</Box>
 				</Box>
 				<Box sx={{ w: 300 }}>
-					<List>
+					<Box
+						sx={{
+							display: { xs: "flex", lg: "block" },
+							flexDirection: "column",
+							gap: "20px",
+						}}
+					>
 						{contactInfo.map((info) => (
 							<Box
 								key={info.title}
-								sx={{ display: "flex", alignItems: "center", mt: "28px" }}
+								sx={{
+									display: "flex",
+									alignItems: "center",
+									mt: { xs: "0", lg: "28px" },
+								}}
 							>
-								<Box>
-									<img src={info.icon} alt={`${info.title} logo`} />
+								<Box sx={{ width: { xs: "24px", lg: "40px" } }}>
+									<img
+										style={{ width: "100%" }}
+										src={info.icon}
+										alt={`${info.title} logo`}
+									/>
 								</Box>
-								<Box sx={{ ml: "20px" }}>
-									<Typography variant='h5' color='white'>
+								<Box sx={{ ml: { xs: "15px", lg: "20px" } }}>
+									<Typography
+										color='white'
+										sx={{
+											fontSize: { xs: "20px", lg: "24px" },
+											fontWeight: { xs: "400", lg: "700" },
+										}}
+									>
 										{info.title}
 									</Typography>
-									<Typography color='white'>{info.text}</Typography>
+									<Typography
+										color='white'
+										sx={{
+											fontSize: "20px",
+											fontWeight: "400",
+										}}
+									>
+										{info.text}
+									</Typography>
 								</Box>
 							</Box>
 						))}
-					</List>
+					</Box>
 				</Box>
 			</Box>
 			<Box
-				sx={{ display: "flex", justifyContent: "space-between", mr: "132px" }}
+				sx={{
+					display: "flex",
+					flexDirection: { xs: "column-reverse", lg: "row" },
+					justifyContent: "space-between",
+					mr: { xs: "0", lg: "132px" },
+				}}
 			>
-				<Typography color={"white"} sx={{ pl: "137px", pb: "23px" }}>
+				<Typography
+					sx={{
+						pl: { xs: "0", lg: "137px" },
+						pb: "23px",
+						mt: { xs: "35px", lg: 0 },
+						opacity: { xs: "0.5", lg: "1" },
+						color: { xs: "#CCD3DC", lg: "white" },
+						fontSize: { xs: "16px", lg: "18px" },
+					}}
+				>
 					Copyright 2023. Designed by INRE Global
 				</Typography>
-				<Box sx={{ display: "flex", gap: "1rem" }}>
+				<Box
+					sx={{
+						display: "flex",
+						flexDirection: { xs: "column", lg: "row" },
+						gap: { xs: "24px", lg: "1rem" },
+						mt: { xs: "20px", lg: "0" },
+					}}
+				>
 					{SocialBarData.map((x) => (
 						<Box
-							sx={{ display: "flex", gap: "0.25rem", cursor: "pointer" }}
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								gap: "0.25rem",
+								cursor: "pointer",
+							}}
 							key={x.text}
 						>
 							<Box>
 								<img src={x.logo} alt='logo' />
 							</Box>
-							<Typography variant='h6' color={"white"}>
+							<Typography
+								sx={{
+									color: "white",
+									fontSize: { xs: "20px", lg: "18px" },
+									fontWeight: { xs: "400", lg: "600" },
+								}}
+							>
 								{x.text}
 							</Typography>
 						</Box>
