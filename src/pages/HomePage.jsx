@@ -12,8 +12,8 @@ const HomePage = () => {
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
-				mt: "180px",
-				gap: "35px",
+				mt: { xs: "58px", lg: "180px" },
+				gap: { xs: "25px", lg: "35px" },
 			}}
 		>
 			<Hero />

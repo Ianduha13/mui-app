@@ -31,16 +31,53 @@ const OurOfferings = () => {
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
+				paddingX: "0px",
 			}}
 		>
-			<Typography variant='h4' sx={{ borderBottom: 5, pb: "22px", px: "8px" }}>
+			<Typography
+				variant='h4'
+				sx={{
+					borderBottom: 3,
+					borderColor: "#01244A",
+					px: "8px",
+					fontWeight: "700",
+					fontSize: { xs: "20px", lg: "28px" },
+					pb: { xs: "5px", lg: "10px" },
+					fontSize: { xs: "20px", lg: "28px" },
+					color: "#01244A",
+				}}
+			>
 				Our Offerings
 			</Typography>
-			<Typography sx={{ my: "20px" }}>
+			<Typography
+				sx={{
+					my: "20px",
+					textAlign: "center",
+					fontSize: { xs: "14px", lg: "16px" },
+					lineHeight: "24px",
+				}}
+			>
 				This whole purchase journey can be divided into three stages. For more
-				details, <a href='/'>Click Here</a>
+				details,{" "}
+				<a
+					href='/'
+					style={{
+						textDecoration: "none",
+						fontWeight: "700",
+						color: "#002550",
+					}}
+				>
+					Click Here
+				</a>
 			</Typography>
-			<Box sx={{ display: "flex", weight: "100vw", gap: "29px", mb: "34px" }}>
+			<Box
+				sx={{
+					display: "flex",
+					weight: "100vw",
+					gap: "29px",
+					mb: { xs: "20px", lg: "34px" },
+				}}
+			>
 				{Offerings.map((x) => (
 					<Button
 						key={x.number}
@@ -94,24 +131,60 @@ const OurOfferings = () => {
 						variant='outlined'
 						sx={{
 							position: "relative",
-							height: "631px",
-							width: "455px",
-							padding: "24px",
+							height: { xs: "452px", lg: "631px" },
+							width: { xs: "360px", lg: "455px" },
+							padding: { xs: "15px", lg: "24px" },
 						}}
 					>
-						<CardMedia>
-							<img src={x.media} alt='image27' />
+						<CardMedia
+							sx={{
+								height: { xs: "245px", lg: "319px" },
+								width: { xs: "330px", lg: "407px" },
+							}}
+						>
+							<img
+								style={{ height: "100%", width: "100%" }}
+								src={x.media}
+								alt='image27'
+							/>
 						</CardMedia>
-						<CardContent>
-							<Typography variant='h4'>{x.header}</Typography>
-							<Typography sx={{ my: "20px", color: "#1A1A1A", opacity: "0.6" }}>
+						<CardContent
+							sx={{
+								display: "flex",
+								flexDirection: "column",
+								padding: "0",
+								gap: { xs: "10px", lg: "20px" },
+								mt: { xs: "10px", lg: "30px" },
+							}}
+						>
+							<Typography
+								variant='h4'
+								sx={{
+									fontSize: { xs: "20px", lg: "28px" },
+									color: "#002550",
+								}}
+							>
+								{x.header}
+							</Typography>
+							<Typography
+								sx={{
+									color: "#1A1A1A",
+									opacity: "0.6",
+									fontSize: { xs: "14px", lg: "18px" },
+								}}
+							>
 								{x.content}
 							</Typography>
 						</CardContent>
-						<CardActions>
+						<CardActions sx={{ padding: "0", mt: { xs: "10px", lg: "20px" } }}>
 							<Button
 								variant='outlined'
-								style={{ position: "absolute", bottom: "24px" }}
+								sx={{
+									fontWeight: "600",
+									fontSize: { xs: "14px", lg: "18px" },
+									py: { xs: "6px", lg: "10px" },
+									px: { xs: "16px", lg: "32px" },
+								}}
 							>
 								Contact Us <ArrowForward sx={{ pl: "4px" }} />
 							</Button>

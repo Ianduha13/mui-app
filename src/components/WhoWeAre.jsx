@@ -7,20 +7,41 @@ const WhoWeAre = () => {
 		<Paper
 			elevation={0}
 			sx={{
-				width: "1464px",
-				height: "409px",
+				width: { xs: "360px", lg: "1464px" },
+				height: { xs: "433px", lg: "409px" },
 				bgcolor: "#F1F1F1",
 				display: "flex",
 				alignItems: "center",
-				px: "27px",
-				gap: "34px",
+				flexDirection: { xs: "column", lg: "row" },
+				px: { xs: "10px", lg: "27px" },
+				py: { xs: "10px", lg: "0px" },
+				gap: { xs: "10px", lg: "34px" },
 			}}
 		>
-			<img src={WhoWeAreImg} alt='whoweareimg' />
-			<Box sx={{ height: "100%", width: "100%", mr: "27px" }}>
+			<img style={{ width: "100%" }} src={WhoWeAreImg} alt='whoweareimg' />
+			<Box
+				sx={{
+					height: "100%",
+					width: "100%",
+					mr: { xs: "0px", lg: "27px" },
+					display: { xs: "flex", lg: "block" },
+					flexDirection: "column",
+					justifyContent: "center",
+					gap: { xs: "10px", lg: "0px" },
+				}}
+			>
+				<Typography sx={{ display: { xs: "block", lg: "none" } }}>
+					Real State
+				</Typography>
 				<Typography
 					variant='h1'
-					sx={{ mb: "20px", marginTop: "42px", lineHeight: "42.59px" }}
+					sx={{
+						mb: { xs: "0px", lg: "20px" },
+						fontSize: { xs: "20px", lg: "36px" },
+						fontWeight: "600",
+						marginTop: { xs: "0px", lg: "42px" },
+						lineHeight: { xs: "27.24px", lg: "42.59px" },
+					}}
 				>
 					Who We Are
 				</Typography>
@@ -29,7 +50,23 @@ const WhoWeAre = () => {
 					sx={{
 						color: "#1A1A1A",
 						lineHeight: "22.59px",
+						fontSize: "14px",
 						opacity: "0.8",
+						display: { xs: "block", lg: "none" },
+					}}
+				>
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+					minim veniam,
+				</Typography>
+				<Typography
+					variant='h6'
+					sx={{
+						color: "#1A1A1A",
+						lineHeight: "22.59px",
+
+						opacity: "0.8",
+						display: { xs: "none", lg: "block" },
 					}}
 				>
 					The Indian real estate sector is resilient despite global headwinds.
@@ -47,7 +84,7 @@ const WhoWeAre = () => {
 					sx={{
 						py: "12px",
 						px: "24px",
-						mt: "35px",
+						mt: { xs: "0", lg: "35px" },
 						fontWeight: "600",
 						fontSize: "18px",
 					}}

@@ -19,6 +19,7 @@ const OurTeam = () => {
 			description:
 				"A Chartered Accountant & Company Secretary, has over a decade of experience in managing realty focused venture capital funds, and was heading Azur...",
 			//e Capital Advisors Private Limited. He has also been part of the managing committee and execution committee of Azure Capital (100 Crore realty focused funds), he has been part of the execution committee of various special purpose vehicle of investee companies for plotted development, villa projects, and apartments including development work & construction management. He is deeply involved in the fund raising process including investors relationship. Retail sales, NRI relationship handling for real estates advisory. Recently, Lead the process of fund raising of various startups from seed round to series- B round.",
+			role: "Co-Founder",
 			image: Member1Img,
 		},
 		{
@@ -26,6 +27,8 @@ const OurTeam = () => {
 			description:
 				"Deepak Shukla has completed his B.Tech (hons.) from the Indian Institute of Technology (IIT) Kharagpur and obtained an MBA from the Indian Institute of...",
 			// Management (IIM) Ahmedabad, India. He has an overall experience of 11 years in firms like Credit Suisse, FICO, Alvarez and Marsal and The World Bank across geographies. In the past few years, his focus is in solving real world challenges using AI. He has engaged in development of voicebots for contact centres, automated training and validation for Autonomous vehicles applications.",
+
+			role: "Co-Founder",
 			image: Member3Img,
 		},
 		{
@@ -33,6 +36,7 @@ const OurTeam = () => {
 			description:
 				"Entrepreneur with pedigree from IIT-BHU and IIML, and more than 25 years of experience in management responsibilities in top tier companies including Infosys, Infosys...",
 			// BPO and Azure Capital. Co-Founded Azure Capital, a Real Estate Private Equity Fund and Azven Realty, a full service Real Estate Development firm in Bangalore. Set-up and managed a SEBI registered VC fund under Azure Capital. Actively involved in mentoring and advising seed and growth stage startups  at C-Level in Visioning, Governance, Strategy Development & Implementation, Growth Planning, Goal Setting and Investment Structuring & Management.",
+			role: "Co-Founder",
 			image: Member2Img,
 		},
 	]
@@ -42,19 +46,22 @@ const OurTeam = () => {
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
-				mb: "35px",
+				mb: { xs: "20px", lg: "35px" },
 			}}
 		>
 			<Box
 				sx={{
-					borderBottom: 5,
+					borderBottom: 3,
+					borderColor: "#01244A",
 					mb: "17px",
 				}}
 			>
 				<Typography
 					variant='h4'
 					sx={{
-						pb: "22px",
+						pb: { xs: "5px", lg: "22px" },
+						fontSize: { xs: "20px", lg: "28px" },
+						color: "#01244A",
 					}}
 				>
 					Our Team Members
@@ -65,29 +72,67 @@ const OurTeam = () => {
 					<Card
 						key={x.name}
 						variant='outlined'
-						sx={{ height: "592px", width: "455px", padding: "24px" }}
+						sx={{
+							position: "relative",
+							height: { xs: "515px", lg: "592px" },
+							width: { xs: "360px", lg: "455px" },
+							padding: { xs: "15px", lg: "24px" },
+							boxhadow: "0px 0px 4px rgba(0, 0, 0, 0.3)",
+						}}
 					>
 						<CardMedia
 							sx={{
 								display: "flex",
-								alignItems: "center",
 								bgcolor: "#1F1F1F",
 								borderRadius: "10px",
 								justifyContent: "center",
 								alignItems: "flex-end",
-								width: "407px",
-								height: "319px",
+								width: "100%",
+								height: { xs: "245px", lg: "319px" },
 							}}
 						>
-							<img src={x.image} alt={x.name} />
+							<img
+								style={{ height: "100%", width: "100%" }}
+								src={x.image}
+								alt={x.name}
+							/>
 						</CardMedia>
-						<CardContent>
-							<Typography variant='h4'>{x.name}</Typography>
+						<CardContent
+							sx={{
+								padding: "0px",
+								mt: "20px",
+								display: "flex",
+								flexDirection: "column",
+								gap: { xs: "12px", lg: "5px" },
+							}}
+						>
+							<Typography
+								variant='h4'
+								sx={{
+									fontFamily: "Open Sans, sans-serif",
+									color: "#002550",
+									fontSize: { xs: "20px", lg: "28px" },
+								}}
+							>
+								{x.name}
+							</Typography>
 							<Typography
 								sx={{
-									mt: "20px",
+									display: { xs: "block", lg: "none" },
+									color: "#1A1A1A",
+									fontWeight: "400",
+									fontSize: "16px",
+									opacity: "0.4",
+									fontFamily: "Open Sans, sans-serif",
+								}}
+							>
+								{x.role}
+							</Typography>
+							<Typography
+								sx={{
 									opacity: "0.6",
 									color: "#1A1A1A",
+									fontFamily: "Open Sans, sans-serif",
 								}}
 							>
 								{x.description}
@@ -97,11 +142,22 @@ const OurTeam = () => {
 							sx={{
 								display: "flex",
 								justifyContent: "flex-end",
-								width: "100%",
+								padding: "0px",
+								position: "absolute",
+								bottom: "19.5px",
+								right: "25px",
 							}}
 						>
-							<Button variant='transparent' sx={{ fontWeight: "400" }}>
-								View More
+							<Button variant='transparent' sx={{ padding: "0" }}>
+								<Typography
+									sx={{
+										fontFamily: "Open Sans, sans-serif",
+										fontWeight: "600",
+										opacity: "0.6",
+									}}
+								>
+									View More
+								</Typography>
 							</Button>
 						</CardActions>
 					</Card>

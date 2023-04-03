@@ -20,43 +20,75 @@ const ContactForm = () => {
 		setPhone(newPhone)
 	}
 	return (
-		<Paper
-			elevation={2}
+		<Box
 			sx={{
-				width: "1488px",
-				height: "518px",
-				marginX: "auto",
-				mt: "35px",
+				width: { xs: "360px", lg: "1488px" },
+				height: { xs: "auto", lg: "518px" },
+				mt: { xs: "0", lg: "35px" },
 				mb: "67px",
-				py: "58px",
-				px: "64px",
+				mx: { xs: "15px", lg: "auto" },
+				py: { xs: "0", lg: "58px" },
+				px: { xs: "0", lg: "64px" },
 				display: "flex",
 				justifyContent: "space-between",
+				flexDirection: { xs: "column-reverse", lg: "row" },
+				boxShadow: { xs: "none", lg: "rgba(0, 0, 0, 0.05) 0px 0px 10px" },
 			}}
 		>
 			<Box>
-				<Typography variant='h5' sx={{ mb: "28px" }}>
+				<Typography
+					variant='h5'
+					sx={{
+						mb: { xs: "20px", lg: "28px" },
+						mt: { xs: "20px", lg: "0" },
+						fontSize: { xs: "20px", lg: "24px" },
+					}}
+				>
 					Get In Touch With Us To Conect
 				</Typography>
 				<Box>
-					<Typography variant='h6' sx={{ fontWeight: "600" }}>
+					<Typography
+						variant='h6'
+						sx={{ fontWeight: "600", display: { xs: "none", lg: "block" } }}
+					>
 						Contact Us
 					</Typography>
-					<FormGroup sx={{ flexGrow: "1", mt: "29px" }}>
+					<FormGroup sx={{ mt: "29px" }}>
 						<Grid
 							container
-							columns={2}
-							columnSpacing={"24px"}
-							rowSpacing={"48px"}
+							px={{ xs: "5px", lg: 0 }}
+							columnSpacing={{ xs: 0, lg: "24px" }}
+							sx={{ width: { xs: "100%", lg: "724px" } }}
+							rowSpacing={{ xs: "20px", lg: "48px" }}
 						>
-							<Grid item>
+							<Grid item xs={12} lg={6}>
 								<TextField
 									label='Full name'
-									sx={{ width: "350px", height: "48px" }}
+									sx={{
+										width: "350px",
+										height: "48px",
+										mr: { xs: "0", lg: "24px" },
+									}}
 								/>
 							</Grid>
 
-							<Grid item>
+							<Grid item xs={12} lg={6}>
+								<TextField
+									placeholder='example@gmail.com'
+									label='Email address'
+									helperText='Please enter a valid e-mail'
+									sx={{
+										width: "350px",
+										height: "48px",
+										"@media (max-width: 768px)": {
+											"& .MuiFormHelperText-root": {
+												display: "none",
+											},
+										},
+									}}
+								/>
+							</Grid>
+							<Grid item xs={12} lg={6}>
 								<MuiTelInput
 									defaultCountry='IN'
 									placeholder={"9876543210"}
@@ -66,16 +98,7 @@ const ContactForm = () => {
 								/>
 							</Grid>
 
-							<Grid item>
-								<TextField
-									placeholder='example@gmail.com'
-									label='Email address'
-									helperText='Please enter a valid e-mail'
-									sx={{ width: "350px", height: "48px" }}
-								/>
-							</Grid>
-
-							<Grid item>
+							<Grid item xs={12} lg={6}>
 								<Autocomplete
 									options={Countries}
 									getOptionLabel={(option) => option.label}
@@ -109,7 +132,7 @@ const ContactForm = () => {
 									)}
 								/>
 							</Grid>
-							<Grid item>
+							<Grid item xs={12} lg={6}>
 								<Autocomplete
 									disablePortal
 									options={stages}
@@ -123,16 +146,35 @@ const ContactForm = () => {
 					</FormGroup>
 					<Button
 						variant='contained'
-						sx={{ mt: "28px", width: "350px", height: "42px" }}
+						sx={{
+							mt: "28px",
+							width: "350px",
+							mx: { xs: "5px", lg: "0" },
+							height: "42px",
+						}}
 					>
 						Submit
 					</Button>
 				</Box>
 			</Box>
-			<Box>
-				<img src={ContactUsImg} alt='contactus' />
+			<Box
+				sx={{
+					px: "0",
+					display: "flex",
+					width: { xs: "360px", lg: "447px" },
+				}}
+			>
+				<img
+					style={{
+						borderRadius: "5px",
+						objectFit: "contain",
+						width: "100%",
+					}}
+					src={ContactUsImg}
+					alt='contactus'
+				/>
 			</Box>
-		</Paper>
+		</Box>
 	)
 }
 export default ContactForm

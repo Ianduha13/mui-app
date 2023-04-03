@@ -11,7 +11,7 @@ const theme = createTheme({
 		},
 	},
 	typography: {
-		fontFamily: "Mulish",
+		fontFamily: "Open Sans, sans-serif",
 		button: {
 			textTransform: "none",
 		},

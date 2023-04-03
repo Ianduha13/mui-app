@@ -58,15 +58,18 @@ const Blogs = () => {
 		>
 			<Box
 				sx={{
-					borderBottom: 5,
+					borderBottom: 3,
 					mb: "17px",
+					borderColor: "#01244A",
 				}}
 			>
 				<Typography
 					variant='h4'
 					sx={{
-						pb: "22px",
 						px: "24px",
+						pb: { xs: "5px", lg: "22px" },
+						fontSize: { xs: "20px", lg: "28px" },
+						color: "#01244A",
 					}}
 				>
 					Blogs
@@ -77,7 +80,12 @@ const Blogs = () => {
 					<Card
 						key={x.image}
 						variant='outlined'
-						sx={{ height: "767px", width: "455px", padding: "24px" }}
+						sx={{
+							position: "relative",
+							height: { lg: "767px" },
+							width: { xs: "360px", lg: "455px" },
+							padding: { xs: "15px", lg: "24px" },
+						}}
 					>
 						<CardMedia
 							sx={{
@@ -87,20 +95,28 @@ const Blogs = () => {
 								borderRadius: "10px",
 								justifyContent: "center",
 								alignItems: "flex-end",
-								width: "407px",
-								height: "319px",
+								width: { xs: "330px", lg: "407px" },
+								height: { xs: "207px", lg: "319px" },
 							}}
 						>
-							<img src={x.image} alt={x.name} />
+							<img
+								style={{ width: "100%", height: "100%" }}
+								src={x.image}
+								alt={x.name}
+							/>
 						</CardMedia>
-						<CardContent>
-							<Typography variant='h5' sx={{ fontSize: "16px", mt: "30px" }}>
+						<CardContent sx={{ padding: "0" }}>
+							<Typography
+								variant='h5'
+								sx={{ fontSize: "16px", mt: { xs: "20px", lg: "30px" } }}
+							>
 								{x.theme}
 							</Typography>
 							<Box
 								sx={{
 									display: "flex",
-									my: "30px",
+									mt: { xs: "11px", lg: "30px" },
+									mb: { xs: "21px", lg: "30px" },
 									justifyContent: "space-between",
 								}}
 							>
@@ -115,14 +131,25 @@ const Blogs = () => {
 										{x.date}
 									</Typography>
 								</Box>
-								<Typography variant='h5' sx={{ fontSize: "16px" }}>
-									{x.author}
+								<Typography
+									variant='h5'
+									sx={{ fontSize: "16px", opacity: "0.5" }}
+								>
+									By {x.author}
 								</Typography>
 							</Box>
-							<Typography variant='h4'>{x.title}</Typography>
+							<Typography
+								variant='h4'
+								sx={{
+									color: "#002550",
+									fontSize: { xs: "20px", lg: "28px" },
+								}}
+							>
+								{x.title}
+							</Typography>
 							<Typography
 								sx={{
-									mt: "14px",
+									mt: { xs: "10px", lg: "14px" },
 									mb: "24px",
 									color: "#1A1A1A",
 									opacity: "0.6",
@@ -133,8 +160,11 @@ const Blogs = () => {
 						</CardContent>
 						<CardActions
 							sx={{
+								position: { xs: "relative", lg: "absolute" },
+								bottom: { xs: "0", lg: "24px" },
 								display: "flex",
 								width: "100%",
+								padding: "0",
 							}}
 						>
 							<Button
@@ -142,7 +172,9 @@ const Blogs = () => {
 								sx={{
 									py: "12px",
 									px: "32px",
+									fontSize: "18px",
 									display: "flex",
+									width: { xs: "100%", lg: "auto" },
 								}}
 							>
 								View More
